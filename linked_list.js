@@ -93,6 +93,20 @@ class LinkedList {
         console.log(result);
     }
 
+    reverse() {
+        let first = this.head
+        this.tail = this.head
+        let second = this.head.next
+        while (second) {
+            let temp = second.next
+            second.next = first
+            first = second
+            second = temp
+        }
+        this.head = first
+        this.tail.next = null
+    }
+
 }
 
 
@@ -105,7 +119,6 @@ a.insert(2, 10)
 a.printLinkedList()
 a.remove(0)
 a.printLinkedList()
-a.remove(a.length - 1)
+a.reverse()
 a.printLinkedList()
-console.log(a)
 console.log("--------------------------------------------------------")
