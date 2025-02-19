@@ -28,6 +28,11 @@ class Stack {
         this.length++
     }
     pop() {
+        if (this.length == 0) {
+            console.log("Stack underflow error")
+            return null
+        }
+        console.log("outside");
         let popedValue = this.data
         this.top = this.top.next
         this.length--
@@ -53,5 +58,10 @@ mystack.push(7)
 mystack.push(5)
 console.log(mystack.peek())
 mystack.print_stack()
+mystack.pop()
+mystack.pop()
+mystack.pop()
+mystack.pop()
+mystack.pop()
 mystack.pop()
 mystack.print_stack()
