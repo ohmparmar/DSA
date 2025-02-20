@@ -29,6 +29,12 @@ class Queue {
         return this.first.data
     }
     dequeue() {
+        if (!this.first) {
+            return null
+        }
+        if (this.first == this.last) {
+            this.last = null
+        }
         let deleted_data = this.first.data
         this.first = this.first.next
         this.length--
