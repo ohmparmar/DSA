@@ -125,6 +125,67 @@ class BST {
             }
         }
     }
+
+    breadthFirstSearch() {
+        let list = []
+        let queue = []
+        let currentNode = this.root
+        queue.push(currentNode)
+
+        while (queue.length !== 0) {
+            currentNode = queue.shift()
+            console.log(currentNode);
+            list.push(currentNode.data)
+            if (currentNode.left !== null) queue.push(currentNode.left)
+            if (currentNode.right !== null) queue.push(currentNode.right)
+        }
+        return list;
+    }
+
+    DFSInorder() {
+        return traverseInorder(this.root, []);
+    }
+
+    DFSpreOrder() {
+        return traversePreorder(this.root, [])
+    }
+
+    DFSpostOrder() {
+        return traversePostorder(this.root, [])
+
+    }
+}
+
+
+function traverseInorder(node, list) {
+    if (node.left) traverseInorder(node.left, list)
+    list.push(node.data)
+
+    if (node.right) traverseInorder(node.right, list)
+    return list
+}
+
+function traversePreorder(node, list) {
+    list.push(node.data)
+    if (node.left) {
+        traversePreorder(node.left, list)
+    }
+
+    if (node.right) {
+        traversePreorder(node.right, list)
+    }
+    return list
+}
+function traversePostorder(node, list) {
+    if (node.left) {
+        traversePostorder(node.left, list)
+    }
+
+    if (node.right) {
+        traversePostorder(node.right, list)
+    }
+    list.push(node.data)
+    return list
 }
 
 function traverse(node) {
@@ -142,5 +203,8 @@ mybst.insert(20)
 mybst.insert(170)
 mybst.insert(15)
 mybst.insert(1)
-console.log(mybst.lookup(70))
-console.log(mybst.lookup(9))
+
+console.log(mybst.breadthFirstSearch())
+console.log(mybst.DFSInorder())
+console.log(mybst.DFSpostOrder())
+console.log(mybst.DFSpreOrder())
